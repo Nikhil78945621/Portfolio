@@ -28,7 +28,7 @@ export default function Projects({ data }: { data?: any[] }) {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {projects.map((project, index) => (
+          {projects.map((project: any, index: number) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
@@ -60,7 +60,7 @@ export default function Projects({ data }: { data?: any[] }) {
               </p>
               
               <ul className="flex flex-wrap gap-3 font-mono text-xs text-slate-500 dark:text-slate-400 mt-auto">
-                {project.techStack.map((tech, i) => (
+                {project.techStack.map((tech: string, i: number) => (
                   <li key={i}>{tech}</li>
                 ))}
               </ul>

@@ -20,7 +20,7 @@ export default function Experience({ data }: { data?: any[] }) {
         </div>
 
         <div className="space-y-12">
-          {experiences.map((exp, index) => (
+          {experiences.map((exp: any, index: number) => (
             <motion.div 
               key={index}
               initial={{ opacity: 0, x: -20 }}

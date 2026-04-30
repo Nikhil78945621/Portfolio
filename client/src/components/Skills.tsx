@@ -20,7 +20,7 @@ export default function Skills({ data }: { data?: any[] }) {
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {skills.map((skill, index) => (
+          {skills.map((skill: any, index: number) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 10 }}
