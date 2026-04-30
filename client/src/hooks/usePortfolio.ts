@@ -32,7 +32,7 @@ export function usePortfolio() {
         error: null
       });
     } catch (err: any) {
-      setData(prev => ({ ...prev, loading: false, error: err.message }));
+      setData((prev: any) => ({ ...prev, loading: false, error: err.message }));
     }
   };
 
