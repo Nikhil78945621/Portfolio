@@ -11,7 +11,6 @@ export default function Admin() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [activeSection, setActiveSection] = useState<string | null>(null);
-  const router = useRouter();
   
   const portfolio = usePortfolio();
 
@@ -111,7 +110,7 @@ export default function Admin() {
               { id: 'projects', name: 'Projects', desc: 'Showcase your latest work.' },
               { id: 'skills', name: 'Skills', desc: 'List your technical capabilities.' },
               { id: 'education', name: 'Education', desc: 'Manage your academic background.' }
-            ].map(section => (
+            ].map((section: any) => (
               <div 
                 key={section.id} 
                 onClick={() => setActiveSection(section.id)}
