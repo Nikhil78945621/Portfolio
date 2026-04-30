@@ -1,4 +1,4 @@
-import { Router } from 'express';
+import { Router, Request, Response } from 'express';
 import User from '../models/User';
 import Education from '../models/Education';
 import Experience from '../models/Experience';
@@ -11,7 +11,7 @@ const router = Router();
 // Generic CRUD factory
 const createCrudRoutes = (model: any, path: string) => {
   // Get all
-  router.get(`/${path}`, async (req, res) => {
+  router.get(`/${path}`, async (req: Request, res: Response) => {
     try {
       const items = await model.find();
       res.json(items);
@@ -21,7 +21,7 @@ const createCrudRoutes = (model: any, path: string) => {
   });
 
   // Get one
-  router.get(`/${path}/:id`, async (req, res) => {
+  router.get(`/${path}/:id`, async (req: Request, res: Response) => {
     try {
       const item = await model.findById(req.params.id);
       if (!item) return res.status(404).json({ message: 'Not found' });
@@ -32,7 +32,7 @@ const createCrudRoutes = (model: any, path: string) => {
   });
 
   // Create
-  router.post(`/${path}`, protect, async (req, res) => {
+  router.post(`/${path}`, protect, async (req: Request, res: Response) => {
     try {
       const newItem = new model(req.body);
       const savedItem = await newItem.save();
@@ -43,7 +43,7 @@ const createCrudRoutes = (model: any, path: string) => {
   });
 
   // Update
-  router.put(`/${path}/:id`, protect, async (req, res) => {
+  router.put(`/${path}/:id`, protect, async (req: Request, res: Response) => {
     try {
       const updatedItem = await model.findByIdAndUpdate(req.params.id, req.body, { new: true });
       if (!updatedItem) return res.status(404).json({ message: 'Not found' });
@@ -54,7 +54,7 @@ const createCrudRoutes = (model: any, path: string) => {
   });
 
   // Delete
-  router.delete(`/${path}/:id`, protect, async (req, res) => {
+  router.delete(`/${path}/:id`, protect, async (req: Request, res: Response) => {
     try {
       const deletedItem = await model.findByIdAndDelete(req.params.id);
       if (!deletedItem) return res.status(404).json({ message: 'Not found' });
@@ -66,7 +66,7 @@ const createCrudRoutes = (model: any, path: string) => {
 };
 
 // Special route for the single user profile
-router.get('/profile', async (req, res) => {
+router.get('/profile', async (req: Request, res: Response) => {
   try {
     const user = await User.findOne();
     if (!user) return res.status(404).json({ message: 'User not found' });
@@ -76,7 +76,7 @@ router.get('/profile', async (req, res) => {
   }
 });
 
-router.put('/profile', protect, async (req, res) => {
+router.put('/profile', protect, async (req: Request, res: Response) => {
   try {
     const user = await User.findOneAndUpdate({}, req.body, { new: true, upsert: true });
     res.json(user);
