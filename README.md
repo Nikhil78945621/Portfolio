@@ -1,57 +1,49 @@
-# MERN Portfolio Platform
+# 🚀 MERN Portfolio Platform
 
-A dynamic, full-stack personal portfolio and resume builder based on the B.L.A.S.T protocol.
+A dynamic, full-stack personal portfolio and resume builder.
 
-## Architecture
+## 🏗️ Architecture
 - **Frontend**: Next.js (App Router), Tailwind CSS, Framer Motion
 - **Backend**: Node.js, Express, MongoDB
-- **Authentication**: JWT
+- **Authentication**: JWT (JSON Web Tokens)
 
-## Running Locally
+---
 
-### Backend
-1. `cd server`
-2. Create a `.env` file with `MONGO_URI`, `JWT_SECRET`, `ADMIN_EMAIL`, `ADMIN_PASSWORD`
-3. `npm install`
-4. `npm run dev`
+## 🛠️ Local Development
 
-### Frontend
-1. `cd client`
-2. Create a `.env.local` file with `NEXT_PUBLIC_API_URL=http://localhost:5000/api`
-3. `npm install`
-4. `npm run dev`
+### 1. Backend Setup
+1. Navigate to the server directory: `cd server`
+2. Create your environment file: `cp .env.example .env`
+3. Fill in your credentials in `.env` (MongoDB URI, JWT Secret, Admin Login).
+4. Install dependencies: `npm install`
+5. Start the development server: `npm run dev`
 
-## Deployment Instructions
+### 2. Frontend Setup
+1. Navigate to the client directory: `cd client`
+2. Create your environment file: `cp .env.example .env.local`
+3. Update `NEXT_PUBLIC_API_URL` if your backend is running on a different port.
+4. Install dependencies: `npm install`
+5. Start the development server: `npm run dev`
 
-### Phase 5: Trigger (Deployment)
+---
 
-#### 1. Backend (Render / Railway)
-1. Push your code to GitHub.
-2. Sign up on [Render](https://render.com) or [Railway](https://railway.app).
-3. Create a new "Web Service" and connect your GitHub repository.
-4. Set the Root Directory to `server`.
-5. Set the Build Command to `npm install && npx tsc`.
-6. Set the Start Command to `node dist/index.js` or `npm start`.
-7. Add Environment Variables:
-   - `MONGO_URI` (From MongoDB Atlas)
-   - `JWT_SECRET` (A strong random string)
-   - `ADMIN_EMAIL`
-   - `ADMIN_PASSWORD`
-8. Deploy!
+## 🌐 Deployment
 
-#### 2. Frontend (Vercel)
-1. Sign up on [Vercel](https://vercel.com).
-2. Create a new Project and select your GitHub repository.
-3. Set the Framework Preset to Next.js.
-4. Set the Root Directory to `client`.
-5. Add Environment Variables:
-   - `NEXT_PUBLIC_API_URL`: Use the deployed Render/Railway backend URL (e.g., `https://your-api.onrender.com/api`).
-6. Deploy! Vercel will automatically build and deploy the application.
-7. Add custom domain support via Vercel Settings -> Domains.
+### Backend (Render / Railway)
+1. Set the **Root Directory** to `server`.
+2. **Build Command**: `npm install && npm run build`
+3. **Start Command**: `npm start`
+4. Add environment variables from `server/.env.example`.
 
-## Features Included
-- Dynamic JSON-based resume modeling
-- MongoDB integration with Express REST API
-- Protected Admin Dashboard via JWT
-- Responsive Next.js Frontend with dark mode / tailwind support
-- Framer Motion animations
+### Frontend (Vercel)
+1. Set the **Root Directory** to `client`.
+2. Vercel will auto-detect Next.js.
+3. Add `NEXT_PUBLIC_API_URL` pointing to your deployed backend.
+
+---
+
+## ✨ Features
+- 📄 **Dynamic Resume**: JSON-based resume modeling for easy updates.
+- 🔐 **Admin Dashboard**: Secure JWT-protected area to manage projects and skills.
+- 🎨 **Premium UI**: Responsive design with dark mode and smooth Framer Motion animations.
+- 🚀 **REST API**: Clean Express-based API for data management.
